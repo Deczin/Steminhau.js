@@ -1,4 +1,5 @@
 const Discord = require("discord.js")
+const { ButtonBuilder, ButtonStyle, ActionRowBuilder, ComponentType, EmbedBuilder } = require("discord.js");
 
 module.exports = {
   name: "botinfo", // Coloque o nome do comando
@@ -6,6 +7,7 @@ module.exports = {
   type: Discord.ApplicationCommandType.ChatInput,
 
   run: async (client, interaction) => {
+    const canal = await client.channels.cache.get("1159278719488233492");
 
     let dono = "626090816846430229"; // Coloque seu ID
     let membros = client.users.cache.size;
@@ -17,8 +19,9 @@ module.exports = {
     let livraria = "Discord.Js";
     let ping = client.ws.ping;
 
-    let embed = new Discord.EmbedBuilder()
-    .setColor("Random")
+
+    const embed = new EmbedBuilder()
+    .setColor("#FF1493")
     .setAuthor({ name: bot, iconURL: avatar_bot })
     .setFooter({ text: bot, iconURL: avatar_bot })
     .setTimestamp(new Date())
@@ -27,8 +30,13 @@ module.exports = {
 \n> ⚙ Membros: \`${membros}\`.\n> ⚙ Servidores: \`${servidores}\`.\n> ⚙ Canais: \`${canais}\`.\n> ⚙ Ping: \`${ping}\`.
 \n> 📚 Linguagem de programação: \`${linguagem}\`.\n> 📚 Livraria: \`${livraria}\`.`);
 
-    interaction.reply({ embeds: [embed] })
+    
 
+    const message = await interaction.reply({ embeds: [embed] })
+
+    setTimeout(() => {
+      message.delete();
+    }, 50000);
 
   }
 }

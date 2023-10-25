@@ -25,7 +25,12 @@ const client = new Discord.Client({
 
 module.exports = client
 
-    const roles = {
+    
+
+  client.on('ready', async (c) => {
+    const canal = await client.channels.cache.get("1159274023872647188");
+
+    const roles = { 
       menino : '1159260519853719562',
       menina : '1159260415604305980',
       outros : '1161885784043946084',
@@ -36,10 +41,7 @@ module.exports = client
       console : '1159261415803199529',
       registrado : '1161881457996873789', // Coloque o ID do cargo
     }
-
-  client.on('ready', async (c) => {
-    const canal = await client.channels.cache.get("1159274023872647188");
-
+    
 
       var image1 = 'https://cdn.discordapp.com/attachments/1158223213915025491/1163276853688148079/5f417da9226b3ba507ef6214de044f12.gif';
       var image2 = 'https://cdn.discordapp.com/attachments/1158223213915025491/1163276853121908736/4acdb61fe62be4bc8b9005f2193cd0d2.gif';
@@ -68,7 +70,7 @@ module.exports = client
       const embedG = new Discord.EmbedBuilder()
       .setColor('#FF1493')
       .setAuthor({ name: client.user.tag, iconURL: client.user.displayAvatarURL({ dynamic: true }) })
-      .setDescription(`🎃 𝑽𝒐𝒄𝒆̂ 𝒔𝒆 𝒊𝒅𝒆𝒏𝒕𝒊𝒇𝒊𝒄𝒂 𝒄𝒐𝒎 𝒒𝒖𝒂𝒍 𝒈𝒆̂𝒏𝒆𝒓𝒐? 🎃\n\n🎃 ︰ᨈ・🧢ㅤㅤ𝑴𝒆𝒏𝒊𝒏𝒐・\n🎃 ︰ᨈ・🩰ㅤㅤ𝑴𝒆𝒏𝒊𝒏𝒂・\n🎃 ︰ᨈ・👀ㅤㅤ𝑶𝒖𝒕𝒓𝒐𝒔・ `)
+      .setDescription(`✦﹒➜ Qual gênero você se identifica?\n[${roles.menino}]\n🎃 ︰ᨈ・🩰ㅤㅤ𝑴𝒆𝒏𝒊𝒏𝒂・\n🎃 ︰ᨈ・👀ㅤㅤ𝑶𝒖𝒕𝒓𝒐𝒔・ `)
       .setImage(`${image1}`)
 
       const buttonG = new ActionRowBuilder().addComponents(firstButton, secondButton, thirdbutton);

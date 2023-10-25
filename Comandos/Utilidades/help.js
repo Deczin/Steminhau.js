@@ -1,5 +1,7 @@
 const Discord = require("discord.js")
 
+const { EmbedBuilder, ActionRowBuilder, StringSelectMenuBuilder } =  require("discord.js");
+
 module.exports = {
   name: "help", // Coloque o nome do comando
   description: "Painel de comandos do bot.", // Coloque a descrição do comando
@@ -7,28 +9,41 @@ module.exports = {
 
   run: async (client, interaction) => {
 
-    let embed_painel = new Discord.EmbedBuilder()
-    .setColor("Aqua")
+    const embed_painel = new EmbedBuilder()
+    .setColor("#FF1493")
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL({ dynmiac: true }) })
     .setDescription(`Olá ${interaction.user}, veja meus comandos interagindo com o painel abaixo:`);
 
-    let embed_utilidade = new Discord.EmbedBuilder()
-    .setColor("Aqua")
+    const embed_utilidade = new EmbedBuilder()
+    .setColor("#FF1493")
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL({ dynmiac: true }) })
-    .setDescription(`Olá ${interaction.user}, veja meus comandos de **utilidade** abaixo:`);
+    .setDescription(`Olá ${interaction.user}, veja meus comandos de **utilidade** abaixo:\n\n 
+            **/avatar**  Vê o avatar de um membro.\n 
+            **/botinfo** Vê as informações do bot.\n
+            **/serverinfo** Vê as informações do servidor atual.\n
+            **/userinfo** Vê as informações de um membro.\n`);
 
-    let embed_diversao = new Discord.EmbedBuilder()
-    .setColor("Aqua")
+    const embed_diversao = new EmbedBuilder()
+    .setColor("#FF1493")
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL({ dynmiac: true }) })
-    .setDescription(`Olá ${interaction.user}, veja meus comandos de **diversão** abaixo:`);
+    .setDescription(`Olá ${interaction.user}, veja meus comandos de **diversão** abaixo:
+                    **/hug** Abraça um membro.\n
+                    **/kiss** Beija um Membro.\n
+                    **/slap** Dá um tapa em um membro.\n`);
 
-    let embed_adm = new Discord.EmbedBuilder()
-    .setColor("Aqua")
+    const embed_adm = new EmbedBuilder()
+    .setColor("#FF1493")
     .setAuthor({ name: interaction.user.username, iconURL: interaction.user.displayAvatarURL({ dynmiac: true }) })
-    .setDescription(`Olá ${interaction.user}, veja meus comandos de **administração** abaixo:`);
+    .setDescription(`Olá ${interaction.user}, veja meus comandos de **administração** abaixo:
+                    **/clear** Limpa as mensagens.\n
+                    **/dm** Envia uma mensagem no pv do membro.\n
+                    **/lock** Trava o canal para não enviar mensagem.\n
+                    **/say** Usa o bot para falar algo.\n
+                    **/sorteio** Cria um sorteio.\n
+                    **/unlock** Destrava o canal.`);
 
-    let painel = new Discord.ActionRowBuilder().addComponents(
-        new Discord.StringSelectMenuBuilder()
+    const painel = new ActionRowBuilder().addComponents(
+        new StringSelectMenuBuilder()
             .setCustomId("painel_help")
             .setPlaceholder("Clique aqui!")
             .addOptions(
