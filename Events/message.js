@@ -34,7 +34,35 @@ client.on('messageCreate', async (message) => {
     setTimeout(() => {
       response.delete();
     },10000)
-  }
+  };
+  if (message.content === 'a') {
+
+    const response = await message.reply('b');
+    setTimeout(() => {
+      response.delete();
+    },10000)
+  };
+  if (message.content === 'bom dia') {
+
+    const response = await message.reply('Bom dia<a:core:1165326309577203803>');
+    setTimeout(() => {
+      response.delete();
+    },10000)
+  };
+  if (message.content === 'boa tarde') {
+
+    const response = await message.reply('Boa tardeee!! Cade o café!!!<a:7105kuromicoffee:1164267017340211294>');
+    setTimeout(() => {
+      response.delete();
+    },10000)
+  };
+  if (message.content === 'boa noite') {
+
+    const response = await message.reply('Boa noite! Bons sonhos<a:1477_BlankHeart:803762029545521182>');
+    setTimeout(() => {
+      response.delete();
+    },10000)
+  };
 });
 
 client.login(process.env.TOKEN);
